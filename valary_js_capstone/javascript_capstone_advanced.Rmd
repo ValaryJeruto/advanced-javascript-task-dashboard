@@ -1,0 +1,268 @@
+---
+title: "Prompt-Powered Kickstart: Advanced JavaScript Task Dashboard"
+author: "Valary Jeruto"
+date: "March 23, 2026"
+output:
+  html_document:
+    toc: true
+    toc_depth: 3
+    number_sections: true
+---
+
+# 1. Title & Objective
+
+## Chosen Technology
+JavaScript
+
+## Why I chose it
+I chose JavaScript because it is one of the most important languages in software development and web development. It is used to create interactive user interfaces, handle browser events, manage data in the client, and support both beginner and advanced programming concepts.
+
+## End Goal
+The end goal of this capstone is to build a working browser-based task dashboard that shows a stronger level of JavaScript skill than a basic “Hello World” project. The application should allow users to create, edit, search, filter, sort, complete, and export tasks while saving data with localStorage.
+
+# 2. Quick Summary of the Technology
+
+JavaScript is a high-level programming language used to build interactive digital experiences. It runs in the browser and can also run on the server using Node.js.
+
+## Where it is used
+- Front-end web applications
+- Server-side applications with Node.js
+- APIs and automation scripts
+- Mobile app development
+- Desktop apps built with JavaScript frameworks
+
+## One real-world example
+An e-commerce website uses JavaScript to update the shopping cart instantly, validate payment forms, and show search suggestions while the user types.
+
+# 3. System Requirements
+
+## Operating System
+- Windows
+- macOS
+- Linux
+
+## Tools Required
+- A modern browser such as Chrome, Edge, or Firefox
+- A code editor such as VS Code
+- Optional: Node.js for expanded JavaScript practice
+- Optional: RStudio or Posit for rendering this `.Rmd` file
+
+## Project Files
+- `index.html`
+- `styles.css`
+- `app.js`
+- `README.md`
+
+# 4. Installation & Setup Instructions
+
+## Step 1: Create the project folder
+
+```text
+advanced-javascript-task-dashboard
+```
+
+## Step 2: Add the core files
+
+```text
+index.html
+styles.css
+app.js
+README.md
+javascript_capstone_advanced.Rmd
+```
+
+## Step 3: Open the folder in VS Code
+
+Use VS Code to edit the HTML, CSS, and JavaScript files.
+
+## Step 4: Run the application
+
+Open `index.html` in a browser.
+
+## Expected setup outcome
+You should see a dashboard with:
+- a task form
+- task statistics
+- search, filter, and sort tools
+- a task list section
+
+# 5. Minimal Working Example
+
+## What the example does
+This example creates an advanced task dashboard. It lets the user:
+- add a task
+- edit a task
+- delete a task
+- mark tasks complete
+- search and filter tasks
+- export tasks as JSON
+- keep data saved through browser refreshes
+
+## Core JavaScript Example
+
+```javascript
+const STORAGE_KEY = "advanced-js-capstone-tasks";
+
+class TaskDashboard {
+  constructor() {
+    this.tasks = [];
+    this.loadTasks();
+    this.render();
+  }
+
+  loadTasks() {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    this.tasks = raw ? JSON.parse(raw) : [];
+  }
+
+  persistTasks() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(this.tasks));
+  }
+}
+```
+
+## Why this code matters
+This code is important because it introduces:
+- constants
+- classes
+- constructors
+- arrays
+- localStorage
+- JSON parsing and stringifying
+
+These are more advanced concepts than a simple single-function beginner script.
+
+## Expected output
+The application renders a modern task dashboard in the browser. When the user adds tasks, the cards appear instantly on the page. After refreshing the page, the tasks remain because they were stored in localStorage.
+
+# 6. AI Prompt Journal
+
+This section shows how expert-level prompt engineering improves the quality of technical learning.
+
+## How experts typically prompt
+Experts usually do not ask broad prompts like “teach me JavaScript.” Instead, they structure prompts with:
+- a clear role
+- a precise outcome
+- technical constraints
+- expected format
+- explanation level
+- debugging or review criteria
+
+A strong expert prompt often follows this pattern:
+
+> Act as a senior JavaScript mentor. Help me build a browser-based task dashboard using vanilla JavaScript only. The project must include DOM manipulation, event handling, localStorage, filtering, sorting, and JSON export. Explain each part in beginner-friendly language, but keep the code production-ready and well-structured.
+
+## Prompt 1 — Architecture prompt
+**Prompt used**
+
+> Act as a senior JavaScript instructor and project reviewer. Design an advanced but beginner-friendly capstone project using only HTML, CSS, and vanilla JavaScript. The project should be browser-based, realistic, and strong enough to demonstrate DOM manipulation, event handling, array methods, localStorage, search, filter, sorting, and export features. Give me a practical project idea, core features, file structure, and step-by-step build plan.
+
+**Curriculum link**
+- Insert your Moringa curriculum prompt link here
+
+**Helpful part of the response**
+The response helped define a task dashboard as the project and gave a clean feature roadmap.
+
+**Evaluation**
+Very helpful. It moved the project from a vague idea into a scoped build plan.
+
+## Prompt 2 — Implementation prompt
+**Prompt used**
+
+> Build the full JavaScript logic for the task dashboard using a class-based structure. Use clear function names, separate rendering logic from data logic, and keep the code readable for a beginner. Include form validation, edit and delete features, task completion toggling, filtering, sorting, and localStorage persistence.
+
+**Curriculum link**
+- Insert your Moringa curriculum prompt link here
+
+**Helpful part of the response**
+It showed how to separate methods like `saveTask`, `render`, `filteredTasks`, and `persistTasks`.
+
+**Evaluation**
+Very helpful. It improved code structure and maintainability.
+
+## Prompt 3 — Debugging prompt
+**Prompt used**
+
+> Review this JavaScript code like a senior debugging coach. Find likely bugs, edge cases, and beginner mistakes. Explain each issue, why it happens, and show the corrected version.
+
+**Curriculum link**
+- Insert your Moringa curriculum prompt link here
+
+**Helpful part of the response**
+It highlighted form reset logic, missing defensive checks, and localStorage parsing risks.
+
+**Evaluation**
+Helpful because it improved reliability and made the project feel more polished.
+
+## Prompt 4 — Documentation prompt
+**Prompt used**
+
+> Write an R Markdown capstone document for this JavaScript project using the required format: Title and Objective, Quick Summary, System Requirements, Setup Instructions, Minimal Working Example, AI Prompt Journal, Common Issues and Fixes, and References. Make it clear, professional, and beginner-friendly.
+
+**Curriculum link**
+- Insert your Moringa curriculum prompt link here
+
+**Helpful part of the response**
+It organized the final deliverable in the exact structure needed for submission.
+
+**Evaluation**
+Very helpful for packaging the project clearly.
+
+## Reflection on AI use
+AI helped most when prompts were specific. The more precise the prompt became, the better the output became. This taught me that prompt engineering is not just “asking a question”; it is defining the job, the format, the depth, the constraints, and the success criteria.
+
+# 7. Common Issues & Fixes
+
+## Problem 1: JavaScript file does not run
+**Cause:** Wrong `<script>` path or file name.
+
+**Fix:** Confirm this line exists in `index.html`.
+
+```html
+<script src="app.js"></script>
+```
+
+## Problem 2: Data disappears after refresh
+**Cause:** `localStorage.setItem()` or `JSON.stringify()` was not used correctly.
+
+**Fix:** Save the updated task array after every create, edit, delete, or toggle action.
+
+## Problem 3: Filters do not update the UI
+**Cause:** State changed, but `render()` was not called again.
+
+**Fix:** Re-render the task list after any state change or filter change.
+
+## Problem 4: JSON export fails
+**Cause:** Blob creation or download logic is incomplete.
+
+**Fix:** Use a Blob, create an object URL, trigger download, then revoke the URL.
+
+## Helpful troubleshooting links
+- MDN JavaScript documentation
+- Stack Overflow
+- JavaScript.info
+- freeCodeCamp forum
+
+# 8. References
+
+## Official documentation
+- MDN Web Docs — JavaScript
+- Node.js documentation
+- HTML Living Standard
+- CSS documentation from MDN
+
+## Tutorials
+- JavaScript.info
+- freeCodeCamp JavaScript curriculum
+- W3Schools JavaScript tutorial
+
+## Helpful blog and video resources
+- Beginner JavaScript videos on YouTube
+- DOM manipulation tutorials
+- localStorage implementation guides
+
+# 9. Final Reflection
+
+This capstone helped me move beyond basic JavaScript syntax into practical application design. The finished project shows how JavaScript can manage user input, update the DOM, store data locally, and provide a more complete interactive experience.
+
+The biggest lesson was that expert-level prompting leads to better technical results. Specific prompts improved planning, implementation, debugging, and documentation. This made AI more useful as a coding assistant and learning partner.

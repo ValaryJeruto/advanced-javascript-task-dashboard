@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Advanced JavaScript Task Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">JavaScript Capstone Project</p>
+        <h1>Advanced Task Dashboard</h1>
+        <p class="hero-copy">
+          A browser-based JavaScript app that demonstrates DOM manipulation, form validation,
+          event handling, filtering, sorting, localStorage persistence, and data export.
+        </p>
+      </div>
+      <div class="hero-actions">
+        <button id="loadDemoBtn" class="btn secondary">Load Demo Data</button>
+        <button id="exportBtn" class="btn primary">Export JSON</button>
+      </div>
+    </header>
+
+    <main class="grid-layout">
+      <section class="panel">
+        <h2>Add or Update a Task</h2>
+        <form id="taskForm" novalidate>
+          <input type="hidden" id="taskId" />
+          <div class="form-grid">
+            <label>
+              <span>Task title</span>
+              <input id="title" name="title" type="text" placeholder="Example: Build landing page" required maxlength="80" />
+            </label>
+
+            <label>
+              <span>Category</span>
+              <select id="category" name="category">
+                <option value="Development">Development</option>
+                <option value="Design">Design</option>
+                <option value="Research">Research</option>
+                <option value="Testing">Testing</option>
+                <option value="Documentation">Documentation</option>
+              </select>
+            </label>
+
+            <label>
+              <span>Priority</span>
+              <select id="priority" name="priority">
+                <option value="High">High</option>
+                <option value="Medium" selected>Medium</option>
+                <option value="Low">Low</option>
+              </select>
+            </label>
+
+            <label>
+              <span>Due date</span>
+              <input id="dueDate" name="dueDate" type="date" />
+            </label>
+
+            <label class="full-width">
+              <span>Description</span>
+              <textarea id="description" name="description" rows="4" placeholder="Briefly describe the task goals, blockers, or notes."></textarea>
+            </label>
+          </div>
+
+          <div id="formMessage" class="form-message" aria-live="polite"></div>
+
+          <div class="button-row">
+            <button type="submit" class="btn primary" id="saveBtn">Save Task</button>
+            <button type="button" class="btn ghost" id="resetBtn">Reset Form</button>
+            <button type="button" class="btn ghost danger" id="clearCompletedBtn">Clear Completed</button>
+          </div>
+        </form>
+      </section>
+
+      <aside class="panel">
+        <h2>Project Stats</h2>
+        <div class="stats-grid">
+          <article class="stat-card">
+            <span class="stat-label">Total Tasks</span>
+            <strong id="totalTasks">0</strong>
+          </article>
+          <article class="stat-card">
+            <span class="stat-label">Completed</span>
+            <strong id="completedTasks">0</strong>
+          </article>
+          <article class="stat-card">
+            <span class="stat-label">Open</span>
+            <strong id="openTasks">0</strong>
+          </article>
+          <article class="stat-card">
+            <span class="stat-label">Overdue</span>
+            <strong id="overdueTasks">0</strong>
+          </article>
+        </div>
+
+        <div class="legend">
+          <p><span class="dot high"></span> High priority</p>
+          <p><span class="dot medium"></span> Medium priority</p>
+          <p><span class="dot low"></span> Low priority</p>
+        </div>
+      </aside>
+    </main>
+
+    <section class="panel">
+      <div class="toolbar">
+        <div>
+          <h2>Task List</h2>
+          <p class="muted">Search, filter, and sort tasks to explore more advanced JavaScript behavior.</p>
+        </div>
+        <div class="toolbar-controls">
+          <input id="searchInput" type="search" placeholder="Search title, description, or category" />
+          <select id="statusFilter">
+            <option value="all">All status</option>
+            <option value="open">Open only</option>
+            <option value="completed">Completed only</option>
+            <option value="overdue">Overdue only</option>
+          </select>
+          <select id="sortBy">
+            <option value="created-desc">Newest first</option>
+            <option value="created-asc">Oldest first</option>
+            <option value="due-asc">Nearest due date</option>
+            <option value="priority-desc">Highest priority</option>
+            <option value="title-asc">Title A-Z</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="taskContainer" class="task-grid" aria-live="polite"></div>
+    </section>
+  </div>
+
+  <template id="taskCardTemplate">
+    <article class="task-card">
+      <div class="task-card-top">
+        <div>
+          <h3 class="task-title"></h3>
+          <p class="task-meta"></p>
+        </div>
+        <span class="badge"></span>
+      </div>
+      <p class="task-description"></p>
+      <div class="task-footer">
+        <div class="task-status"></div>
+        <div class="task-actions">
+          <button class="btn tiny toggle-btn"></button>
+          <button class="btn tiny ghost edit-btn">Edit</button>
+          <button class="btn tiny ghost danger delete-btn">Delete</button>
+        </div>
+      </div>
+    </article>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>
